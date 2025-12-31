@@ -8,5 +8,7 @@ export interface RappelObj {
   reminderBefore: number; 
   priority: 'high' | 'medium' | 'low';
   note?: string;
+  owner: 'andreas' | 'leila';
+
   createdAt?: Timestamp;
 }

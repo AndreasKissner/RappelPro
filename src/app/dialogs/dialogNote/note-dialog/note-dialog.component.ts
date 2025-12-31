@@ -20,6 +20,7 @@ const DEFAULT_RAPPEL: RappelObj = {
   reminderBefore: 0,
   priority: 'low',
   note: '',
+  owner : 'andreas'
 }
 
 @Component({

@@ -1,11 +1,8 @@
-/* =========================
-   CARD BASIS (FIXED)
-========================= */
 .rappel-card {
-  /* HIER IST DIE LÖSUNG: */
-  flex: 1 1 320px;    /* Wachsen: Ja, Schrumpfen: Ja, Basis: 320px */
-  min-width: 300px;   /* Verhindert das Zusammenquetschen unter 300px */
-  max-width: 420px;   /* Verhindert, dass sie zu riesig wird */
+
+  flex: 1 1 320px;    
+  min-width: 300px;   
+  max-width: 420px;   
   
   background: #ffffff;
   border-radius: 14px;
@@ -14,21 +11,14 @@
   flex-direction: column;
   gap: 8px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  
-  /* Damit die Border-Left (Priority) nicht das Padding zerschießt */
   box-sizing: border-box; 
 }
 
-/* Falls die Card eine Angular-Komponente ist, 
-   muss das Host-Element der Card auch Flex-Eigenschaften erlauben */
 :host {
   display: flex; 
-  justify-content: center; /* Zentriert die Card im Slot, falls nötig */
+  justify-content: center; 
 }
 
-/* =========================
-   HEADER
-========================= */
 .rappel-header {
   display: flex;
   justify-content: space-between;
@@ -41,6 +31,13 @@
   color: #2c3e50;
 }
 
+.rappel-owner{
+display: flex;
+justify-content: center;
+align-items: flex-start;
+flex-direction: column;
+}
+
 .rappel-priority {
   font-size: 0.7rem;
   font-weight: 600;
@@ -49,10 +46,10 @@
   background: rgba(0, 0, 0, 0.06);
   color: #333;
 }
-
-/* =========================
-   HELPER TEXT (LABELS)
-========================= */
+.owner-prio-content{
+  display: flex;
+  justify-content: space-between;
+}
 .rappel-helper-text {
   font-size: 0.65rem;
   font-weight: 600;
@@ -62,9 +59,6 @@
   margin: 4px 0 0 0;
 }
 
-/* =========================
-   DATE / TIME
-========================= */
 .rappel-datetime {
   display: flex;
   gap: 16px;
@@ -78,9 +72,6 @@
   gap: 6px;
 }
 
-/* =========================
-   REMINDER
-========================= */
 .rappel-reminder {
   display: flex;
   align-items: center;
@@ -91,9 +82,7 @@
   color: #3f51b5;
 }
 
-/* =========================
-   NOTE
-========================= */
+
 .rappel-note {
   display: flex;
   align-items: flex-start;
@@ -108,9 +97,6 @@
   line-height: 1.4;
 }
 
-/* =========================
-   ICONS
-========================= */
 mat-icon {
   font-size: 18px;
   width: 18px;
@@ -119,9 +105,7 @@ mat-icon {
   flex-shrink: 0;
 }
 
-/* =========================
-   PRIORITY COLORS
-========================= */
+
 .priority-high {
   border-left: 6px solid #c62828;
 }
@@ -148,7 +132,7 @@ mat-icon {
   }
 }
 
-/* Farben prio */
+
 .rappel-priority {
   padding: 6px 10px;
   border-radius: 6px;
@@ -156,7 +140,6 @@ mat-icon {
   width: fit-content;
 }
 
-/* ROT – Urgent */
 .rappel-priority.high {
   display: flex;
   justify-content: center;
@@ -166,7 +149,6 @@ mat-icon {
   background: #ffebee;
 }
 
-/* GELB – Important */
 .rappel-priority.medium {
   display: flex;
   justify-content: center;
@@ -176,7 +158,6 @@ mat-icon {
   background: #fffde7;
 }
 
-/* GRÜN – Normal */
 .rappel-priority.low {
   display: flex;
   justify-content: center;

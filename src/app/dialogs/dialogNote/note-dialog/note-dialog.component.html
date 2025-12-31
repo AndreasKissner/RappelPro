@@ -8,6 +8,15 @@
     <input [(ngModel)]="rappelForm.title" matInput name="title" placeholder="Ex: Rendez-vous médecin" />
   </mat-form-field>
 
+  <!-- Owner -->
+   <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Rappel de Qui?</mat-label>
+    <mat-select [(ngModel)]="rappelForm.owner" name="owner">
+      <mat-option value="Andreas">Andreas</mat-option>
+      <mat-option value="Leila">Leïla</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <!-- Datum & Uhrzeit -->
   <div class="row">
     <mat-form-field appearance="outline">
