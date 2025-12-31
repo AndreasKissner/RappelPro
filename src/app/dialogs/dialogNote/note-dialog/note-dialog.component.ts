@@ -33,6 +33,9 @@ const DEFAULT_RAPPEL: RappelObj = {
   styleUrl: './note-dialog.component.scss',
 })
 export class NoteDialogComponent {
+
+  // Prüft ob Titel, Datum und Zeit da sind
+
   //Dialog hier Injecten das er da Ist
   private dialogRef = inject(MatDialogRef<NoteDialogComponent>);
   //Firestore holen
@@ -52,7 +55,70 @@ export class NoteDialogComponent {
   }
 
 
+  // 1. HAUPTMETHODE: Der Koordinator (Der "Chef")
 async saveRappel() {
+  if (!this.isFormValid()) {
+    alert("Bitte fülle alle Pflichtfelder aus (Titel, Datum, Zeit)!");
+    return;
+  }
+
+  // Entscheidet: Update oder Neu?
+  if (this.rappelForm.docId) {
+    await this.updateExistingRappel();
+  } else {
+    await this.createNewRappel();
+  }
+  
+  this.dialogRef.close(true);
+}
+
+// 2. KONTROLLE: Validierung
+// Gibt true zurück, wenn alles Wichtige ausgefüllt ist
+
+// 3. UPDATE: Vorhandenen Eintrag ändern
+private async updateExistingRappel() {
+  const existingDocId = this.rappelForm.docId;
+  
+  // Dieser Check behebt den Fehler aus deinem Screenshot!
+  if (!existingDocId) return; 
+
+  try {
+    const { docId, ...rappelData } = this.rappelForm;
+    const rappelDoc = doc(this.firestore, 'rappel', existingDocId); 
+    await updateDoc(rappelDoc, rappelData);
+    alert("Rappel aktualisiert!");
+  } catch (error) {
+    this.handleError(error);
+  }
+}
+
+// 4. CREATE: Neu speichern
+private async createNewRappel() {
+  try {
+    const { docId, ...rappelData } = this.rappelForm;
+    await addDoc(this.rappelRef, {
+      ...rappelData,
+      createdAt: serverTimestamp()
+    });
+    alert("Rappel erfolgreich gespeichert!");
+  } catch (error) {
+    this.handleError(error);
+  }
+}
+
+isFormValid(): boolean {
+  return !!this.rappelForm.title && 
+         !!this.rappelForm.date && 
+         !!this.rappelForm.time;
+}
+
+// 5. FEHLER: Zentrales Management
+private handleError(error: any) {
+  console.error("Firebase Fehler:", error);
+  alert("Etwas ist beim Speichern schiefgelaufen.");
+}
+
+/* async saveRappel() {
   try {
     if (this.rappelForm.docId) {
       const { docId, ...rappelData } = this.rappelForm;
@@ -72,7 +138,7 @@ async saveRappel() {
   } catch (error) {
     alert("Error aves soufgarde");
   }
-}
+} */
 
 /*   async saveRappel() {
     try {

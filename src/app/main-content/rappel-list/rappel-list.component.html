@@ -28,8 +28,7 @@
        <!-- Look in app.config and dont forget modul in rappel list ts -->
       <p class="rappel-helper-text">Date et heure prévues</p>
       <div class="rappel-datetime">
-        <div class="rappel-datetime">
-          <div class="rappel-datetime">
+       
             <span class="date">
               <mat-icon fontSet="material-icons-outlined">event</mat-icon>
               {{ $any(rappelInfo.date)?.toDate() | date: "dd.MM.yyyy" }}
@@ -39,8 +38,7 @@
               <mat-icon fontSet="material-icons-outlined">schedule</mat-icon>
               {{ $any(rappelInfo.time)?.toDate() | date: "HH'h'mm" }} 
             </span>
-          </div>
-        </div>
+      
       </div>
 
       <!-- REMINDER -->
