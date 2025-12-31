@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -10,6 +10,9 @@ import { RappelObj } from '../../../service/allServices';
 import { addDoc, collection, doc, Firestore, serverTimestamp, updateDoc } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {  MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTimepickerModule } from '@angular/material/timepicker';
 
 
 const DEFAULT_RAPPEL: RappelObj = {
@@ -25,7 +28,7 @@ const DEFAULT_RAPPEL: RappelObj = {
 
 @Component({
   selector: 'app-note-dialog',
-  imports: [MatDialogContent, MatFormFieldModule, MatOptionModule, MatSelectModule, MatRadioModule, MatDialogActions, MatInputModule, MatButtonModule, MatDialogClose, CommonModule, FormsModule],
+  imports: [MatDialogContent, MatFormFieldModule, MatOptionModule, MatSelectModule, MatRadioModule, MatDialogActions, MatInputModule, MatButtonModule, MatDialogClose, CommonModule, FormsModule, MatDatepickerModule,MatNativeDateModule,MatIconModule, MatTimepickerModule],
   templateUrl: './note-dialog.component.html',
   styleUrl: './note-dialog.component.scss',
 })

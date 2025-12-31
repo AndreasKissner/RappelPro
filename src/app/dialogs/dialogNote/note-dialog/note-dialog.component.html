@@ -1,7 +1,8 @@
-<h2 mat-dialog-title>{{rappelForm.docId ? 'Edit rappel' : 'Nouveau rappel'}}</h2>
+<h2 mat-dialog-title>
+  {{ rappelForm.docId ? "Edit rappel" : "Nouveau rappel" }}
+</h2>
 
 <mat-dialog-content class="rappel-dialog">
-
   <!-- Titel -->
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Titre du rappel</mat-label>
@@ -9,7 +10,7 @@
   </mat-form-field>
 
   <!-- Owner -->
-   <mat-form-field appearance="outline" class="full-width">
+  <mat-form-field appearance="outline" class="full-width">
     <mat-label>Rappel de Qui?</mat-label>
     <mat-select [(ngModel)]="rappelForm.owner" name="owner">
       <mat-option value="Andreas">Andreas</mat-option>
@@ -19,15 +20,24 @@
 
   <!-- Datum & Uhrzeit -->
   <div class="row">
-    <mat-form-field appearance="outline">
-      <mat-label>Date</mat-label>
-      <input [(ngModel)]="rappelForm.date" matInput type="date" name="date" />
-    </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Heure</mat-label>
-      <input [(ngModel)]="rappelForm.time" matInput type="time" name="time" />
+      <mat-label>Date</mat-label>
+    
+      <input matInput [matDatepicker]="datePicker" [(ngModel)]="rappelForm.date" name="date" />
+      <mat-datepicker-toggle matSuffix [for]="datePicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
     </mat-form-field>
+
+  <mat-form-field appearance="outline">
+  <mat-label>Heure</mat-label>
+  <input matInput [matTimepicker]="timePicker" [(ngModel)]="rappelForm.time" name="time" />
+  <mat-timepicker-toggle matIconSuffix [for]="timePicker"></mat-timepicker-toggle>
+  <mat-timepicker #timePicker></mat-timepicker>
+</mat-form-field>
+
+
   </div>
 
   <!-- Erinnerung vorher -->
@@ -55,9 +65,7 @@
         Important
       </mat-radio-button>
 
-      <mat-radio-button value="low" class="prio low">
-        Normal
-      </mat-radio-button>
+      <mat-radio-button value="low" class="prio low"> Normal </mat-radio-button>
     </mat-radio-group>
   </div>
 
@@ -66,7 +74,6 @@
     <mat-label>Note (optionnel)</mat-label>
     <textarea [(ngModel)]="rappelForm.note" matInput rows="3" name="note"></textarea>
   </mat-form-field>
-
 </mat-dialog-content>
 
 <mat-dialog-actions [align]="'end'">

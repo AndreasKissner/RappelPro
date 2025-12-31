@@ -11,12 +11,12 @@ import { collectionData } from '@angular/fire/firestore';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTimepickerModule } from '@angular/material/timepicker';
 
 @Component({
   selector: 'app-rappel-list',
   imports: [MatButtonModule, MatIconModule, BtnDeleteEditComponent, CommonModule, MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule],
+    MatInputModule,MatNativeDateModule,CommonModule,MatTimepickerModule],
   templateUrl: './rappel-list.component.html',
   styleUrl: './rappel-list.component.scss',
 })

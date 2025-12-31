@@ -1,7 +1,7 @@
 @if (rappel$ | async; as rappels) {
   @for (rappelInfo of rappels; track rappelInfo.docId) {
     <div class="rappel-card priority-high">
-      <!-- TITLE -->
+     
       <!-- TITLE -->
       <p class="rappel-helper-text">Titre du rappel</p>
       <div class="rappel-header">
@@ -17,7 +17,7 @@
         <p class="rappel-helper-text">Rappel de qui ?</p>
         {{ rappelInfo.owner }}
       </div>
-      
+
       <!-- PRIORITY -->
       <div class="rappel-priority" [ngClass]="rappelInfo.priority">
         <p class="rappel-helper-text">Priorité</p>
@@ -28,15 +28,17 @@
       <!-- DATE & TIME -->
       <p class="rappel-helper-text">Date et heure prévues</p>
       <div class="rappel-datetime">
-        <span class="date">
-          <mat-icon fontSet="material-icons-outlined">event</mat-icon>
-          {{ rappelInfo.date }}
-        </span>
+        <div class="rappel-datetime">
+  <span class="date">
+    <mat-icon fontSet="material-icons-outlined">event</mat-icon>
+    {{ $any(rappelInfo.date)?.toDate() | date: 'dd.MM.yyyy' }}
+  </span>
 
-        <span class="time">
-          <mat-icon fontSet="material-icons-outlined">schedule</mat-icon>
-          {{ rappelInfo.time }}
-        </span>
+  <span class="time">
+    <mat-icon fontSet="material-icons-outlined">schedule</mat-icon>
+    {{ $any(rappelInfo.time)?.toDate() | date: 'HH:mm' }}
+  </span>
+</div>
       </div>
 
       <!-- REMINDER -->
@@ -54,6 +56,7 @@
       </div>
 
       <app-btn-delete-edit [rappel]="rappelInfo"> </app-btn-delete-edit>
+      
     </div>
   } @empty {
     <p>Pas de rappels</p>
