@@ -1,0 +1,200 @@
+/* =========================
+   CARD BASIS (FIXED)
+========================= */
+.rappel-card {
+  /* HIER IST DIE LÖSUNG: */
+  flex: 1 1 320px;    /* Wachsen: Ja, Schrumpfen: Ja, Basis: 320px */
+  min-width: 300px;   /* Verhindert das Zusammenquetschen unter 300px */
+  max-width: 420px;   /* Verhindert, dass sie zu riesig wird */
+  
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  
+  /* Damit die Border-Left (Priority) nicht das Padding zerschießt */
+  box-sizing: border-box; 
+}
+
+/* Falls die Card eine Angular-Komponente ist, 
+   muss das Host-Element der Card auch Flex-Eigenschaften erlauben */
+:host {
+  display: flex; 
+  justify-content: center; /* Zentriert die Card im Slot, falls nötig */
+}
+
+/* =========================
+   HEADER
+========================= */
+.rappel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rappel-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.rappel-priority {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #333;
+}
+
+/* =========================
+   HELPER TEXT (LABELS)
+========================= */
+.rappel-helper-text {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #888;
+  margin: 4px 0 0 0;
+}
+
+/* =========================
+   DATE / TIME
+========================= */
+.rappel-datetime {
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.rappel-datetime span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =========================
+   REMINDER
+========================= */
+.rappel-reminder {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #3f51b5;
+}
+
+/* =========================
+   NOTE
+========================= */
+.rappel-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+
+  font-size: 0.8rem;
+  color: #555;
+
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+  line-height: 1.4;
+}
+
+/* =========================
+   ICONS
+========================= */
+mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #666;
+  flex-shrink: 0;
+}
+
+/* =========================
+   PRIORITY COLORS
+========================= */
+.priority-high {
+  border-left: 6px solid #c62828;
+}
+
+.priority-medium {
+  border-left: 6px solid #f9a825;
+}
+
+.priority-low {
+  border-left: 6px solid #2e7d32;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+  .rappel-card {
+    padding: 14px;
+  }
+
+  .rappel-datetime {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* Farben prio */
+.rappel-priority {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+/* ROT – Urgent */
+.rappel-priority.high {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #b71c1c;
+  background: #ffebee;
+}
+
+/* GELB – Important */
+.rappel-priority.medium {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #f57f17;
+  background: #fffde7;
+}
+
+/* GRÜN – Normal */
+.rappel-priority.low {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #1b5e20;
+  background: #e8f5e9;
+}
+
+
+.date mat-icon,
+.time mat-icon {
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.date mat-icon:hover,
+.time mat-icon:hover {
+  color: #3f51b5;
+  transform: scale(1.1);
+}

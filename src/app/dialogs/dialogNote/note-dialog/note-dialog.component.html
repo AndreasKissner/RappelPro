@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>{{rappelForm.docId ? 'Edit rappel' : 'Nouveau rappel'}}</h2>
+
+<mat-dialog-content class="rappel-dialog">
+
+  <!-- Titel -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Titre du rappel</mat-label>
+    <input [(ngModel)]="rappelForm.title" matInput name="title" placeholder="Ex: Rendez-vous médecin" />
+  </mat-form-field>
+
+  <!-- Datum & Uhrzeit -->
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input [(ngModel)]="rappelForm.date" matInput type="date" name="date" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Heure</mat-label>
+      <input [(ngModel)]="rappelForm.time" matInput type="time" name="time" />
+    </mat-form-field>
+  </div>
+
+  <!-- Erinnerung vorher -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Rappel avant</mat-label>
+    <mat-select [(ngModel)]="rappelForm.reminderBefore" name="reminderBefore">
+      <mat-option value="0">À l’heure du rendez-vous</mat-option>
+      <mat-option value="10">10 minutes avant</mat-option>
+      <mat-option value="30">30 minutes avant</mat-option>
+      <mat-option value="60">1 heure avant</mat-option>
+      <mat-option value="1440">1 jour avant</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Priorität -->
+  <div class="priority-section">
+    <label class="priority-label">Priorité</label>
+
+    <mat-radio-group [(ngModel)]="rappelForm.priority" class="priority-options" name="priority">
+      <mat-radio-button value="high" class="prio high">
+        Urgent
+      </mat-radio-button>
+
+      <mat-radio-button value="medium" class="prio medium">
+        Important
+      </mat-radio-button>
+
+      <mat-radio-button value="low" class="prio low">
+        Normal
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <!-- Notiz -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Note (optionnel)</mat-label>
+    <textarea [(ngModel)]="rappelForm.note" matInput rows="3" name="note"></textarea>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions [align]="'end'">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-raised-button color="primary" (click)="saveRappel()">
+    Enregistrer
+  </button>
+</mat-dialog-actions>

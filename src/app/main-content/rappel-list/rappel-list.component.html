@@ -1,0 +1,64 @@
+@if (rappel$ | async; as rappels) {
+
+@for (rappelInfo of rappels; track rappelInfo.docId) {
+
+<div class="rappel-card priority-high">
+
+  <!-- TITLE -->
+  <p class="rappel-helper-text">Titre du rappel</p>
+  <div class="rappel-header">
+    <div class="rappel-title">
+      {{ rappelInfo.title }}
+    </div>
+
+    <!-- PRIORITY -->
+    <!-- PRIORITY -->
+    <div class="rappel-priority" [ngClass]="rappelInfo.priority">
+      <p class="rappel-helper-text">Priorité</p>
+      {{ rappelInfo.priority }}
+    </div>
+
+  </div>
+
+
+
+  <!-- DATE & TIME -->
+  <p class="rappel-helper-text">Date et heure prévues</p>
+  <div class="rappel-datetime">
+    <span class="date">
+      <mat-icon fontSet="material-icons-outlined">event</mat-icon>
+      {{ rappelInfo.date }}
+    </span>
+
+    <span class="time">
+      <mat-icon fontSet="material-icons-outlined">schedule</mat-icon>
+      {{ rappelInfo.time }}
+    </span>
+  </div>
+
+  <!-- REMINDER -->
+  <p class="rappel-helper-text">Rappel programmé</p>
+  <div class="rappel-reminder">
+    <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
+    Rappel : {{ getReminderLabel(rappelInfo.reminderBefore) }}
+  </div>
+
+  <!-- NOTE -->
+  <p class="rappel-helper-text">Note personnelle</p>
+  <div class="rappel-note">
+    <mat-icon fontSet="material-icons-outlined">notes</mat-icon>
+    {{ rappelInfo.note }}
+  </div>
+
+  <app-btn-delete-edit [rappel]="rappelInfo">
+  </app-btn-delete-edit>
+
+</div>
+
+} @empty {
+<p>Pas de rappels</p>
+}
+
+} @else {
+<p>Les rappels sont en cours de chargement</p>
+}

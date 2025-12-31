@@ -1,0 +1,102 @@
+// Variablen (analog zum Impressum für Einheitlichkeit)
+$primary-color: #3f51b5;
+$text-dark: #2c3e50;
+$text-light: #5a6772;
+$card-bg: rgba(255, 255, 255, 0.85);
+
+.privacy-page {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+
+  .container {
+    width: 100%;
+    max-width: 800px; // Etwas breiter als Impressum für viel Text
+  }
+
+  header {
+    margin-bottom: 24px;
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: $primary-color;
+      font-weight: 500;
+      gap: 8px;
+      margin-bottom: 16px;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateX(-5px);
+      }
+
+      mat-icon { font-size: 20px; width: 20px; height: 20px; }
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: $text-dark;
+      font-weight: 800;
+    }
+  }
+
+  .glass-card {
+    background: $card-bg;
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    section {
+      margin-bottom: 35px;
+
+      h2 {
+        font-size: 1.3rem;
+        color: $primary-color;
+        margin-bottom: 15px;
+        border-left: 4px solid $primary-color;
+        padding-left: 15px;
+      }
+
+      h3 {
+        font-size: 1rem;
+        color: $text-dark;
+        margin-top: 15px;
+      }
+
+      p {
+        line-height: 1.7;
+        color: $text-light;
+        margin-top: 10px;
+      }
+    }
+
+    .disclaimer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      font-style: italic;
+      color: #999;
+    }
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 30px;
+    color: white; // Damit es auf dem blauen Hintergrund lesbar ist
+    font-size: 0.9rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+}
+
+// Mobile
+@media (max-width: 600px) {
+  .privacy-page {
+    padding: 20px 10px;
+    .glass-card { padding: 20px; }
+  }
+}

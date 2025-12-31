@@ -1,0 +1,67 @@
+h2{
+  margin-left: 30px;
+}
+.rappel-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  min-width: 0;
+
+  mat-form-field {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.full-width {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Priorität */
+.priority-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.priority-label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.priority-options {
+  display: flex;
+  gap: 16px;
+}
+
+.prio {
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* Farben + Text (WCAG-safe) */
+.prio.high {
+  color: #c62828;
+}
+
+.prio.medium {
+  color: #f9a825;
+}
+
+.prio.low {
+  color: #2e7d32;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,102 @@
+// Variablen
+$primary-color: #3f51b5;
+$text-dark: #2c3e50;
+$text-light: #5a6772;
+$card-bg: rgba(255, 255, 255, 0.85);
+$bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+.impressum-page {
+ 
+  background: $bg-gradient;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  
+    background: linear-gradient(
+    135deg, 
+    #00d2ff 0%,   // Hellblau/Cyan
+    #3a7bd5 25%,  // Royalblau
+    #00c9ff 50%,  // Türkis
+    #92fe9d 75%,  // Frisches Grün/Teal
+    #6a11cb 100%  // Tiefes Indigo/Blau
+  );
+
+  .container {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  header {
+    margin-bottom: 24px;
+
+    
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: $text-dark;
+      font-weight: 800;
+    }
+  }
+
+  .glass-card {
+    background: $card-bg;
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    section {
+      margin-bottom: 30px;
+
+      &:last-child { margin-bottom: 0; }
+
+      h2 {
+        font-size: 1.1rem;
+        color: $primary-color;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+
+      p {
+        line-height: 1.6;
+        color: $text-light;
+        margin: 0;
+
+        a {
+          color: $primary-color;
+          text-decoration: none;
+          &:hover { text-decoration: underline; }
+        }
+      }
+    }
+
+    .disclaimer {
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      font-style: italic;
+    }
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 30px;
+    color: $text-light;
+    font-size: 0.9rem;
+  }
+
+
+// Für mobile Geräte
+@media (max-width: 480px) {
+  .impressum-page {
+    padding: 20px 15px;
+    
+    .glass-card {
+      padding: 20px;
+    }
+  }
+}
